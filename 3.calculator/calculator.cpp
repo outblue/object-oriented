@@ -9,27 +9,27 @@ using namespace std;
 
 queue<string> Scan::ToStringQueue(string input)
 {
-    for (int i = 0; i < input.size(); i++)                 //´ÓµÚÒ»¸öÔªËØ¿ªÊ¼Ñ­»·
+    for (int i = 0; i < input.size(); i++)                 //ä»ç¬¬ä¸€ä¸ªå…ƒç´ å¼€å§‹å¾ªç¯
     {
         IN = input[i];
-        if (isdigit(input[i])) temp += IN;                 //Èç¹ûÊÇÊı×Ö£¬¾ÍÔİ´æµ½×Ö·û´®tempÖĞ
+        if (isdigit(input[i])) temp += IN;                 //å¦‚æœæ˜¯æ•°å­—ï¼Œå°±æš‚å­˜åˆ°å­—ç¬¦ä¸²tempä¸­
         else 
         {
-            if (input[i] == '.') temp += IN;               //Èç¹ûÊÇĞ¡Êıµã£¬Ò²Ôİ´æµ½tempÖĞ
-            else                                           //ÈôÊÇÆäÓà·ûºÅ
+            if (input[i] == '.') temp += IN;               //å¦‚æœæ˜¯å°æ•°ç‚¹ï¼Œä¹Ÿæš‚å­˜åˆ°tempä¸­
+            else                                           //è‹¥æ˜¯å…¶ä½™ç¬¦å·
             {
-                if (temp.empty()) str.push(IN);            //µ±tempÎª¿ÕÊ±£¬Ö±½Ópushµ½¶ÓÁĞÖĞ
+                if (temp.empty()) str.push(IN);            //å½“tempä¸ºç©ºæ—¶ï¼Œç›´æ¥pushåˆ°é˜Ÿåˆ—ä¸­
                 else
                 {
-                    str.push(temp);                 	   //·ñÔò£¬ÏÈpush temp                 
-                    str.push(IN);                          //È»ºópush·ûºÅ
-                    temp.clear();                          //×îºóÇå¿Õtemp
+                    str.push(temp);                 	   //å¦åˆ™ï¼Œå…ˆpush temp                 
+                    str.push(IN);                          //ç„¶åpushç¬¦å·
+                    temp.clear();                          //æœ€åæ¸…ç©ºtemp
                 }
             }
         }
     }
     
-    if (!temp.empty()) str.push(temp);                     //Ñ­»·½áÊøºó£¬Èôtemp²»Îª¿Õ£¬push½ø¶ÓÁĞ
+    if (!temp.empty()) str.push(temp);                     //å¾ªç¯ç»“æŸåï¼Œè‹¥tempä¸ä¸ºç©ºï¼Œpushè¿›é˜Ÿåˆ—
     return str;
 }
 
@@ -40,20 +40,20 @@ bool num(string in);
 int main()
 {
     string INPUT;
-    cin >> INPUT ;                           //ÊäÈëÔËËãÊ½
+    cin >> INPUT ;                           //è¾“å…¥è¿ç®—å¼
 
-    bool x = num(INPUT);                     //Í¨¹ınumº¯ÊıÀ´ÅĞ¶ÏÊÇ·ñÒª¼ÌĞøÔËĞĞ
+    bool x = num(INPUT);                     //é€šè¿‡numå‡½æ•°æ¥åˆ¤æ–­æ˜¯å¦è¦ç»§ç»­è¿è¡Œ
 
-    if (x)                                   //Èôx=1
+    if (x)                                   //è‹¥x=1
     {
-        Scan scan;                           //´´½¨scan¶ÔÏó
+        Scan scan;                           //åˆ›å»ºscanå¯¹è±¡
         queue<string> d;
-        d = scan.ToStringQueue(INPUT);       //»ñÈ¡¶ÓÁĞ
+        d = scan.ToStringQueue(INPUT);       //è·å–é˜Ÿåˆ—
 
-        Print print;                         //´´½¨print¶ÔÏó
-        print.toprintqueue(d);               //Êä³ö¶ÓÁĞ
+        Print print;                         //åˆ›å»ºprintå¯¹è±¡
+        print.toprintqueue(d);               //è¾“å‡ºé˜Ÿåˆ—
     }
-    else cout << "It is wrong." << endl;     //Èôx=0£¬±¨´í
+    else cout << "It is wrong." << endl;     //è‹¥x=0ï¼ŒæŠ¥é”™
 
     return 0;
 }
@@ -61,37 +61,37 @@ int main()
 
 bool num(string in)
 {
-    bool y = false;                           //¶¨ÒåÒ»¸öboolÖµ
+    bool y = false;                           //å®šä¹‰ä¸€ä¸ªboolå€¼
     int n = 0;
     for (int i = 0; i < in.size(); i++)          
     {
-        if (isdigit(in[i]))                   //ÅĞ¶ÏÔªËØÊÇ·ñÎªÊı×Ö
+        if (isdigit(in[i]))                   //åˆ¤æ–­å…ƒç´ æ˜¯å¦ä¸ºæ•°å­—
         {
-            n += 1;                           //ÈôÊÇ£¬¼ÓÒ»
+            n += 1;                           //è‹¥æ˜¯ï¼ŒåŠ ä¸€
             if (n > 10)
-			{
-				y = 0;
-				break;
-			}                                 //Èô×ÜÊı´óÓÚ10£¬y=0
-            else y = 1;                       //·ñÔòy=1
+	    {
+		y = 0;
+		break;
+	    }                                 //è‹¥æ€»æ•°å¤§äº10ï¼Œy=0
+            else y = 1;                       //å¦åˆ™y=1
         }
         else
         {
-            if (in[i] == '.')                 //Èô²»ÊÇÊı×Ö¶øÊÇĞ¡Êıµã
+            if (in[i] == '.')                 //è‹¥ä¸æ˜¯æ•°å­—è€Œæ˜¯å°æ•°ç‚¹
             {
-                n += 1;                       //¼ÓÒ»
+                n += 1;                       //åŠ ä¸€
                 if (n > 10) 
-				{
-					y = 0;
-					break;
-				}                             //Èô×ÜÊı´óÓÚ10£¬y=0
-                else y = 1;                   //·ñÔòy=1
+		{
+		    y = 0;
+		    break;
+		}                             //è‹¥æ€»æ•°å¤§äº10ï¼Œy=0
+                else y = 1;                   //å¦åˆ™y=1
             }
             else 
-			{
-				n = 0;
-				y = 1;
-			}                 				  //ÈôÎªÔËËã·û£¬y=1
+	    {
+		n = 0;
+		y = 1;
+	    }                 				  //è‹¥ä¸ºè¿ç®—ç¬¦ï¼Œy=1
         }
     }
     
